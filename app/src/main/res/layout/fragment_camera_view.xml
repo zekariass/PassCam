@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:opencv="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.cvproject.passcam.CameraViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CameraViewFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/angle_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            opencv:layout_constraintBottom_toTopOf="@id/camera_view_fragment"
+            opencv:layout_constraintLeft_toLeftOf="parent"
+            opencv:layout_constraintRight_toRightOf="parent"
+            opencv:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/yaw_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                opencv:layout_constraintBaseline_toBaselineOf="@+id/pitch_textview"
+                opencv:layout_constraintBottom_toBottomOf="parent"
+                opencv:layout_constraintLeft_toLeftOf="parent"
+                opencv:layout_constraintRight_toLeftOf="@+id/pitch_textview"
+                opencv:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/pitch_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                opencv:layout_constraintBaseline_toBaselineOf="@+id/roll_textview"
+                opencv:layout_constraintBottom_toBottomOf="parent"
+                opencv:layout_constraintLeft_toRightOf="@+id/yaw_textview"
+                opencv:layout_constraintRight_toLeftOf="@id/roll_textview"
+                opencv:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/roll_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                opencv:layout_constraintBottom_toBottomOf="parent"
+                opencv:layout_constraintLeft_toRightOf="@id/pitch_textview"
+                opencv:layout_constraintRight_toRightOf="parent"
+                opencv:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.cvproject.passcam.PassCameraView
+            android:id="@+id/camera_view_fragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            opencv:camera_id="any"
+            opencv:layout_constraintBottom_toTopOf="@id/capture_button"
+            opencv:layout_constraintLeft_toLeftOf="parent"
+            opencv:layout_constraintRight_toRightOf="parent"
+            opencv:layout_constraintTop_toBottomOf="@+id/angle_container"
+            opencv:show_fps="true"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/flip_camera_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="32dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/flip_camera_24px"
+            opencv:layout_constraintBottom_toBottomOf="parent"
+            opencv:layout_constraintLeft_toLeftOf="parent"
+            opencv:layout_constraintRight_toRightOf="@id/capture_button"
+            opencv:layout_constraintTop_toBottomOf="@id/camera_view_fragment"
+            tools:visibility="visible" />
+
+
+
+        <ImageView
+            android:id="@+id/capture_button"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:contentDescription="@string/app_name"
+            opencv:layout_constraintBottom_toBottomOf="parent"
+            opencv:layout_constraintLeft_toLeftOf="parent"
+            opencv:layout_constraintRight_toRightOf="parent"
+            opencv:layout_constraintTop_toBottomOf="@id/camera_view_fragment"
+            android:src="@drawable/capture2_24px"
+            tools:visibility="visible" />
+
+
+        <ImageView
+            android:id="@+id/draw_coord_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="8dp"
+            android:contentDescription="@string/app_name"
+            opencv:layout_constraintBottom_toBottomOf="parent"
+            opencv:layout_constraintLeft_toLeftOf="@id/capture_button"
+            opencv:layout_constraintRight_toRightOf="parent"
+            opencv:layout_constraintTop_toBottomOf="@id/camera_view_fragment"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
